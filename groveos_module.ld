@@ -1,9 +1,16 @@
 /* 
-	Linker script file for building loadable GROVEX modules
+	Linker script file for building loadable GroveOS modules.
 
-	Copyright (C) 2017, Fabmicro, LLC.
+	GroveOS is a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
 
-	Author: Ruslan Zalata <rz@fabmicro.ru>
+	Written by Ruslan Zalata and Evgeny Korolenko
+        
+	Copyright (c) 2022, Fabmicro, LLC., Tyumen, Russia.
+	All rights reserved.
+
+	email: info@fabmicro.ru
+
+	SPDX-License-Identifier: BSD-2-Clause
 
 */
 
