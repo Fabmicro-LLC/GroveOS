@@ -38,16 +38,18 @@ The purposes of this tiny OS are as follows:
 
 2. Install STmicros's STM32 libraries.
 
-3. Make a copy of hardware.h and modify it to meet your hardware requirement.
+3. Modify Makefile to match paths to GCC and STM32 libraries.
 
-4. Add your own target to Makefile which includes your modified version of hardware.h, use 'aps' and 'grovex' targers as reference.
+4. Make a copy of hardware.h and modify it to meet your hardware requirement.
 
-5. Run ```make <your_target>``` command.
+5. Add your own target to Makefile which includes your modified version of hardware.h, use 'aps' and 'grovex' targers as reference.
 
-6. Upload resulting ```main.hex``` to your microcontroller using ST-Link utility or use ```stm32flash``` utility to upload binary: 
+6. Run ```make <your_target>``` command.
+
+7. Upload resulting ```main.hex``` to your microcontroller using ST-Link utility or use ```stm32flash``` utility to upload binary: 
 stm32flash/stm32flash -w main.hex -v -b 115200 /dev/ttyUSB0
 
-7. Connect your terminal (```minocom```, ```cu``` or ```hyperterm.exe```) to UART port using 115200 8N1, reset/powerup the device.
+8. Connect your terminal (```minocom```, ```cu``` or ```hyperterm.exe```) to UART port using 115200 8N1, reset/powerup the device.
 
 
 ## Application examples
