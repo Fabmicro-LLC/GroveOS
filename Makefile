@@ -7,21 +7,21 @@ OD=$(CROSS)objdump
 GDB=$(CROSS)gdb
 STRIP=$(CROSS)strip
 READELF=$(CROSS)readelf
+STM32Libraries=../STM32Libraries
 
 BUILD_NUMBER=`cat build_number`
 DEVICE_NAME='"GroveOS"'
 
 MCFLAGS = -g -O1 -mcpu=cortex-m4 -mthumb -mno-thumb-interwork -std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mfp16-format=ieee
-#MCFLAGS = -O1 -mcpu=cortex-m4 -mthumb -mno-thumb-interwork -std=gnu99 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mfp16-format=ieee
 
-STARTUP = ../STM32Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc_ride7/startup_stm32f40xx.s
+STARTUP = $(STM32Libraries)/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc_ride7/startup_stm32f40xx.s
 
-STM32_INCLUDES = -I../STM32Libraries/CMSIS/Device/ST/STM32F4xx/Include/ \
-	-I../STM32Libraries/CMSIS/Include/ \
-	-I../STM32Libraries/STM32F4xx_StdPeriph_Driver/inc/ \
-	-I../STM32Libraries/STM32_USB_OTG_Driver/inc \
-	-I../STM32Libraries/STM32_USB_Device_Library/Core/inc \
-	-I../STM32Libraries/STM32_USB_Device_Library/Class/cdc/inc
+STM32_INCLUDES = -I$(STM32Libraries)/CMSIS/Device/ST/STM32F4xx/Include/ \
+	-I$(STM32Libraries)/CMSIS/Include/ \
+	-I$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/inc/ \
+	-I$(STM32Libraries)/STM32_USB_OTG_Driver/inc \
+	-I$(STM32Libraries)/STM32_USB_Device_Library/Core/inc \
+	-I$(STM32Libraries)/STM32_USB_Device_Library/Class/cdc/inc
 	
 
 SPEEX_INCLUDES = 
@@ -53,48 +53,48 @@ SRC = 	ext_pwm.c ext_gpio.c g711.c audio.c vault.c dali1.c modbus_ext1.c modbus_
 	gui/cal_adc_channel.c \
         gui/svg/nsvg_paint.c  gui/svg/svgimage.c
 
-STM32_SRC = ../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/misc.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rtc.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_adc.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c  \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_flash.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_i2c.c \
-	../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.c
+STM32_SRC = $(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/misc.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rtc.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_adc.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c  \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_flash.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_i2c.c \
+	$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.c
 
-	#../STM32Libraries/STM32_USB_Device_Library/Class/cdc/src/usbd_cdc_core.c \
-	#../STM32Libraries/STM32_USB_Device_Library/Core/src/usbd_req.c \
-	#../STM32Libraries/STM32_USB_Device_Library/Core/src/usbd_core.c \
-	#../STM32Libraries/STM32_USB_Device_Library/Core/src/usbd_ioreq.c \
-	#../STM32Libraries/STM32_USB_OTG_Driver/src/usb_dcd.c \
-	#../STM32Libraries/STM32_USB_OTG_Driver/src/usb_core.c \
-	#../STM32Libraries/STM32_USB_OTG_Driver/src/usb_dcd_int.c \
+	#$(STM32Libraries)/STM32_USB_Device_Library/Class/cdc/src/usbd_cdc_core.c \
+	#$(STM32Libraries)/STM32_USB_Device_Library/Core/src/usbd_req.c \
+	#$(STM32Libraries)/STM32_USB_Device_Library/Core/src/usbd_core.c \
+	#$(STM32Libraries)/STM32_USB_Device_Library/Core/src/usbd_ioreq.c \
+	#$(STM32Libraries)/STM32_USB_OTG_Driver/src/usb_dcd.c \
+	#$(STM32Libraries)/STM32_USB_OTG_Driver/src/usb_core.c \
+	#$(STM32Libraries)/STM32_USB_OTG_Driver/src/usb_dcd_int.c \
 
-	#../STM32Libraries/STM32_USB_OTG_Driver/src/usb_core.c \
-	#../STM32Libraries/STM32_USB_OTG_Driver/src/usb_otg.c 
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_sdio.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_can.c 
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp_aes.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp_des.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp_tdes.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dbgmcu.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_fsmc.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c 
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c \
-	#../STM32Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_wwdg.c 
+	#$(STM32Libraries)/STM32_USB_OTG_Driver/src/usb_core.c \
+	#$(STM32Libraries)/STM32_USB_OTG_Driver/src/usb_otg.c 
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_sdio.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_can.c 
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp_aes.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp_des.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_cryp_tdes.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dbgmcu.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_fsmc.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_md5.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c 
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_iwdg.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rng.c \
+	#$(STM32Libraries)/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_wwdg.c 
 
 
 
