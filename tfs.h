@@ -1,12 +1,12 @@
 /*
-	GroveOS - a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
+	GroveOS is a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
 
 	Written by Ruslan Zalata and Evgeny Korolenko
 	
-	Copyright (c) 2022, Fabmicro, LLC., Tyumen, Russia.
+	Copyright (c) 2017-2022, Fabmicro, LLC., Tyumen, Russia.
 	All rights reserved.
 
-	email: info@fabmicro.ru
+	Email: info@fabmicro.ru
 
 	SPDX-License-Identifier: BSD-2-Clause
 
@@ -15,11 +15,11 @@
 #ifndef _TFS_H_
 #define _TFS_H_
 
-// Below API provides a simple file sysmtem ot be deployed on NAND flash
-// 1. Files a contiguous, means there is on one large data block for each file of a variable size
-// 2. Files cannot be removed, but can be marked as deleted
-// 3. File size is defined upon creation.
-// 4. Files cannot be appended. To append data one has to copy file to a new one with a bigger creation size
+// Below API provides a simple file system to be deployed on NAND flash.
+// 1. Files are contiguous, means there is one large data block for each file of a variable size.
+// 2. Files cannot be removed, but can be marked as deleted.
+// 3. File size is defined upon creation, cannot be altered after.
+// 4. Files cannot be appended. To append data one has to copy file to a new one with a larger size.
 
 typedef struct _TFS_HEADER TFS_HEADER;
 
