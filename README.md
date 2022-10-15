@@ -25,6 +25,7 @@ The purposes of this tiny OS are as follows:
 * SPI LCD support with on-screan resistive touch (FT800).
 * Winstar OLED display support.
 * GUI widgets: windows, buttons, input fields, on-screan keyboard.
+* Software timers with 1ms granularity.
 
 
 ## Dependancies:
