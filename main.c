@@ -92,7 +92,7 @@ int main(void) {
         RCC_GetClocksFreq(&RCC_Clocks);
         SysTick_Config(RCC_Clocks.HCLK_Frequency / 1000);
 
-	print("\r\n\r\nGroveOS ver %04d, product: %s. Copyright (C) Fabmicro, LLC. Tyumen, Russia, 2017-2021.\r\n\r\n", _DEVICE_NAME_, BUILD_NUMBER, OS_PRODUCT_NAME);
+	print("\r\n\r\nGroveOS ver %04d, product: %s. Copyright (C) Fabmicro, LLC. Tyumen, Russia, 2017-2022.\r\n\r\n", _DEVICE_NAME_, BUILD_NUMBER, OS_PRODUCT_NAME);
 	print("RCC_Clocks.HCLK_Frequency = %d, SystemCoreClock = %d, RCC_Clocks.PCLK1_Frequency = %d \r\n", RCC_Clocks.HCLK_Frequency, SystemCoreClock,RCC_Clocks.PCLK1_Frequency);
 	print("UTF8=°йцукен\r\n");
 
