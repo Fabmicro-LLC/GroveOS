@@ -1,4 +1,17 @@
+/*
+	GroveOS - a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
 
+	Written by Ruslan Zalata and Evgeny Korolenko
+	
+	Copyright (c) 2022, Fabmicro, LLC., Tyumen, Russia.
+	All rights reserved.
+
+	email: info@fabmicro.ru
+
+	SPDX-License-Identifier: BSD-2-Clause
+
+*/
+	
 int pcmu_codec_encoder(const void * _from, unsigned * fromLen, void * _to,   unsigned int * toLen);
 int pcmu_codec_decoder(const void * _from, unsigned * fromLen, void * _to,   unsigned int * toLen);
 int pcmu_decode(void * _to,  void *_from, unsigned int fromLen);

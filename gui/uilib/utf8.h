@@ -1,3 +1,21 @@
+
+/*
+	GroveOS - a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
+
+	Written by Ruslan Zalata and Evgeny Korolenko
+	
+	Copyright (c) 2022, Fabmicro, LLC., Tyumen, Russia.
+	All rights reserved.
+
+	email: info@fabmicro.ru
+
+	SPDX-License-Identifier: BSD-2-Clause
+
+	PS: The original author of this piece of code is unknown to us.
+	Please contact us if you can provid proper license text and copyright for this source.
+
+*/
+	
 #ifndef _UTF8_H_
 #define _UTF8_H_
 

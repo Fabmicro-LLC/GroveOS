@@ -1,3 +1,32 @@
+/*
+	GroveOS - a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
+
+	Written by Ruslan Zalata and Evgeny Korolenko
+	
+	Copyright (c) 2022, Fabmicro, LLC., Tyumen, Russia.
+	All rights reserved.
+
+	email: info@fabmicro.ru
+
+	SPDX-License-Identifier: BSD-2-Clause
+*/
+
+/*
+ *   Z M . C
+ *    ZMODEM protocol primitives
+ *    07-28-87  Chuck Forsberg Omen Technology Inc
+ *
+ * Entry point Functions:
+ *	zsbhdr(type, hdr) send binary header
+ *	zshhdr(type, hdr) send hex header
+ *	zgethdr(hdr, eflag) receive header - binary or hex
+ *	zsdata(buf, len, frameend) send data
+ *	zrdata(buf, len) receive data
+ *	stohdr(pos) store position data in Txhdr
+ *	long rclhdr(hdr) recover position offset from header
+ */
+
+	
 #include <stdio.h>
 #include <stdarg.h>
 #include <ctype.h>
@@ -149,21 +178,6 @@ char *s, *p, *u;
 
 
 
-
-/*
- *   Z M . C
- *    ZMODEM protocol primitives
- *    07-28-87  Chuck Forsberg Omen Technology Inc
- *
- * Entry point Functions:
- *	zsbhdr(type, hdr) send binary header
- *	zshhdr(type, hdr) send hex header
- *	zgethdr(hdr, eflag) receive header - binary or hex
- *	zsdata(buf, len, frameend) send data
- *	zrdata(buf, len) receive data
- *	stohdr(pos) store position data in Txhdr
- *	long rclhdr(hdr) recover position offset from header
- */
 
 int Rxtimeout = 1;		/* Seconds to wait for something */
 

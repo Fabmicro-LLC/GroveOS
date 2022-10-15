@@ -26,8 +26,6 @@ Revision History:
 0.1 - date 2013.04.24 - Initial Version
 0.2 - date 2013.08.19 - added few registers.
 
-
- 
 */
 
 #ifndef _FT_GPU_H_
@@ -53,7 +51,6 @@ Revision History:
 #define ARGB4                6UL
 #define BARGRAPH             11UL
 #define BILINEAR             1UL
-#define BITMAPS              1UL
 #define BORDER               0UL
 
 #define CMDBUF_SIZE          4096UL
@@ -362,3 +359,4 @@ typedef struct FT_Gpu_Fonts
 
 
 
+#define BITMAPS              1UL

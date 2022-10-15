@@ -1,5 +1,19 @@
 /*
+	GroveOS - a tiny single-threaded operating system for ARM Cortex-M4F based microcontrollers
 
+	Written by Ruslan Zalata and Evgeny Korolenko
+	
+	Copyright (c) 2022, Fabmicro, LLC., Tyumen, Russia.
+	All rights reserved.
+
+	email: info@fabmicro.ru
+
+	SPDX-License-Identifier: BSD-2-Clause
+
+*/
+	
+
+/*
 
 DALI commands are 16 bits long, an address byte followed by a data byte. The address byte specifies a target device or a special command addressed to all devices.
 
