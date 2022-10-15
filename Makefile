@@ -38,7 +38,7 @@ DEFS = 	-DUSE_STDPERIPH_DRIVER -DSTM32F4XX \
 	-D_DEVICE_NAME_=$(DEVICE_NAME)
 
 CFLAGS	= $(MCFLAGS) $(DEFS) $(INCLUDES)
-LDFLAGS =  -lc_s -lnosys -Wl,-T,grovex_c1_core.ld -Wl,-nmagic -u _printf_float
+LDFLAGS =  -lc_s -lnosys -Wl,-T,groveos_core.ld -Wl,-nmagic -u _printf_float
 #LDFLAGS =  -lc -lnosys -Wl,-T,grovex_c1_core.ld -Wl,-nmagic 
 
 FONTS = fonts/font_oled_6x9.c fonts/calibri_small.c fonts/calibri_medium.c fonts/calibri_large.c
