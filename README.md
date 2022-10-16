@@ -2,7 +2,7 @@
 
 The purposes of this tiny OS are as follows:
 
-1. To abstract hardware layer from application developer to ease and speed-up development of bare-metal applications.
+1. To abstract hardware layer from firmware developer to ease and speed-up development of bare-metal applications.
 2. To resolve licensing issues: all third-party (GPL) code is part of the OS itself, which allows applications to be license-free.
 3. To ease application updates: developers can distribute ELF binaries of their modules (applications), collateral resource and config files which can be easily uploaded to built-in Flash of the hardware using serial ZModem protocol. Downloading back from device is not possible.
 
