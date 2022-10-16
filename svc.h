@@ -307,6 +307,7 @@ char debug_str[256];
 #pragma GCC diagnostic ignored "-Wreturn-type"
 
 #ifndef __STM32F4xx_GPIO_H
+#define __STM32F4xx_GPIO_H
 enum {
 	GPIO_Mode_IN,
 	GPIO_Mode_OUT,
