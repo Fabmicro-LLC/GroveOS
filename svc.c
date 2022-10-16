@@ -860,6 +860,25 @@ void SVC_Handler_main(unsigned int * svc_args)
 			svc_args[0] = 0;
 		} break;
 
+		case SVC_GPIO_READ_BIT: {
+			svc_args[0] =  GPIO_ReadInputDataBit((GPIO_TypeDef *)svc_args[0], svc_args[1]); 
+		} break;
+
+		case SVC_GPIO_SET_BITS: {
+			GPIO_SetBits((GPIO_TypeDef *)svc_args[0], svc_args[1]); 
+			svc_args[0] = 0;
+		} break;
+
+		case SVC_GPIO_RESET_BITS: {
+			GPIO_ResetBits((GPIO_TypeDef *)svc_args[0], svc_args[1]); 
+			svc_args[0] = 0;
+		} break;
+
+		case SVC_GPIO_TOGGLE_BITS: {
+			GPIO_ToggleBits((GPIO_TypeDef *)svc_args[0], svc_args[1]); 
+			svc_args[0] = 0;
+		} break;
+
 		case SVC_NSVG_RASTERIZER: {
 			svc_args[0] = (unsigned int) SVGRAST;
 		} break;

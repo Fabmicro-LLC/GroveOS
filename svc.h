@@ -175,6 +175,10 @@
 
 #define SVC_GET_ALL_ADC_DATA	158
 #define	SVC_READ_SENSOR_AVG	159	// Read AVG value of ADC channel
+#define	SVC_GPIO_READ_BIT	160	// Read value of GPIO pin
+#define	SVC_GPIO_SET_BITS	161	// Set GPIO pins to HIGH
+#define	SVC_GPIO_RESET_BITS	162	// Set GPIO pins to LOW 
+#define	SVC_GPIO_TOGGLE_BITS	163	// Toggle GPIO pins
 
 
 #define	CONFIG_DEFAULT_APP	1	// Name of the existing application to be run on system startup
@@ -281,6 +285,10 @@ int svc_gpio_init_nopull(uint32_t RCC_AHB1Periph, void* GPIOx, unsigned short GP
 int svc_gpio_irq_fall(unsigned short PortSrc, unsigned short PortPin, unsigned short Line, unsigned short IrqChan);
 int svc_gpio_irq_rise(unsigned short PortSrc, unsigned short PortPin, unsigned short Line, unsigned short IrqChan);
 int svc_gpio_irq_risefall(unsigned short PortSrc, unsigned short PortPin, unsigned short Line, unsigned short IrqChan);
+int svc_gpio_read_bin(void* PortSrc, unsigned short PortPin);
+int svc_gpio_set_bits(void* PortSrc, unsigned short PortPins);
+int svc_gpio_reset_bits(void* PortSrc, unsigned short PortPins);
+int svc_gpio_toggle_bits(void* PortSrc, unsigned short PortPins);
 
 #endif //_SVC_H_
 
@@ -297,6 +305,34 @@ char debug_str[256];
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreturn-type"
+
+#ifndef __STM32F4xx_GPIO_H
+enum {
+	GPIO_Mode_IN,
+	GPIO_Mode_OUT,
+	GPIO_Mode_AF,
+	GPIO_Mode_AN
+};
+
+#define GPIO_Pin_0	0x0001 
+#define GPIO_Pin_1	0x0002
+#define GPIO_Pin_2	0x0004
+#define GPIO_Pin_3	0x0008
+#define GPIO_Pin_4	0x0010
+#define GPIO_Pin_5	0x0020
+#define GPIO_Pin_6	0x0040
+#define GPIO_Pin_7	0x0080
+#define GPIO_Pin_8	0x0100
+#define GPIO_Pin_9	0x0200
+#define GPIO_Pin_10	0x0400
+#define GPIO_Pin_11	0x0800
+#define GPIO_Pin_12	0x1000
+#define GPIO_Pin_13	0x2000
+#define GPIO_Pin_14	0x4000
+#define GPIO_Pin_15	0x8000
+#define GPIO_Pin_All	0xFFFF
+
+#endif // __STM32F4xx_GPIO_H
 
 // Stops execution of MSG queue function
 __attribute__ ((noinline)) void svc_stop(void)
@@ -579,6 +615,30 @@ __attribute__ ((noinline)) int svc_gpio_irq_rise(unsigned short PortSrc, unsigne
 __attribute__ ((noinline)) int svc_gpio_irq_risefall(unsigned short PortSrc, unsigned short PortPin, unsigned short Line, unsigned short IrqChan)
 {
 	svc(SVC_GPIO_IRQ_RISEFALL);
+}
+
+// Read GPIO value
+__attribute__ ((noinline)) int svc_gpio_read_bit(void* GPIOx, unsigned short GPIO_Pin)
+{
+	svc(SVC_GPIO_READ_BIT);
+}
+
+// Set GPIO bits value to HIGH
+__attribute__ ((noinline)) int svc_gpio_set_bits(void* GPIOx, unsigned short GPIO_Pins)
+{
+	svc(SVC_GPIO_SET_BITS);
+}
+
+// Set GPIO bits value to LOW 
+__attribute__ ((noinline)) int svc_gpio_reset_bits(void* GPIOx, unsigned short GPIO_Pins)
+{
+	svc(SVC_GPIO_RESET_BITS);
+}
+
+// Toggle GPIO bits 
+__attribute__ ((noinline)) int svc_gpio_toggle_bits(void* GPIOx, unsigned short GPIO_Pins)
+{
+	svc(SVC_GPIO_TOGGLE_BITS);
 }
 
 // Start SPI transfer  
