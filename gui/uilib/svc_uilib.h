@@ -86,35 +86,35 @@ __attribute__ ((noinline)) void svc_nsvg_draw(Context* gc, NSVGimage* svg, int x
         svc(SVC_NSVG_DRAW);
 }
 
-__attribute__ ((noinline)) void svc_show_calibrate_touch(int test) {
+__attribute__ ((noinline)) WND* svc_show_calibrate_touch(int test) {
         svc(SVC_SHOW_CALIBRATE_TOUCH);
 }
 
-__attribute__ ((noinline)) void svc_show_input_text(INPUT_TEXT_PARAM* param, char* text) {
+__attribute__ ((noinline)) WND* svc_show_input_text(INPUT_TEXT_PARAM* param, char* text) {
         svc(SVC_SHOW_INPUT_TEXT);
 }
 
-__attribute__ ((noinline)) void svc_show_input_num(INPUT_TEXT_PARAM* param) {
+__attribute__ ((noinline)) WND* svc_show_input_num(INPUT_TEXT_PARAM* param) {
         svc(SVC_SHOW_INPUT_NUM);
 }
 
-__attribute__ ((noinline)) void svc_show_input_num_format(INPUT_TEXT_PARAM* param, char* format) {
+__attribute__ ((noinline)) WND* svc_show_input_num_format(INPUT_TEXT_PARAM* param, char* format) {
         svc(SVC_SHOW_INPUT_NUM_FORMAT);
 }
 
-__attribute__ ((noinline)) void svc_show_select_list(INPUT_TEXT_PARAM *param, char** list, unsigned int list_len, unsigned int selected_index) {
+__attribute__ ((noinline)) WND* svc_show_select_list(INPUT_TEXT_PARAM *param, char** list, unsigned int list_len, unsigned int selected_index) {
         svc(SVC_SHOW_SELECT_LIST);
 }
 
-__attribute__ ((noinline)) void svc_show_alert(char* text) {
+__attribute__ ((noinline)) WND* svc_show_alert(char* text) {
         svc(SVC_SHOW_ALERT);
 }
 
-__attribute__ ((noinline)) void svc_show_set_time() {
+__attribute__ ((noinline)) WND* svc_show_set_time() {
         svc(SVC_SHOW_SET_TIME);
 }
 
-__attribute__ ((noinline)) void svc_show_adc_setup(int aps_format) {
+__attribute__ ((noinline)) WND* svc_show_adc_setup(int aps_format) {
         svc(SVC_SHOW_ADC_SETUP);
 }
 
