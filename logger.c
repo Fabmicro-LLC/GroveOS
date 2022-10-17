@@ -12,6 +12,7 @@
 
 */
 	
+#include <stm32f4xx_rtc.h>
 #include "logger.h"
 #include "config.h"
 #include "utils.h"

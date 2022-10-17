@@ -15,11 +15,31 @@
 #ifndef _LOGGER_H_
 #define _LOGGER_H_
 
-#include <stm32f4xx_rtc.h>
+#include <stdint.h>
 
 #define LOGGER_START_SECTOR	17
 #define LOGGER_END_SECTOR	23
 #define	LOGGER_MAX_BYTES	(12*4)
+
+#ifndef __STM32F4xx_RTC_H
+#define __STM32F4xx_RTC_H
+
+typedef struct {
+        uint8_t RTC_Hours;
+        uint8_t RTC_Minutes;
+        uint8_t RTC_Seconds;
+        uint8_t RTC_H12;
+} RTC_TimeTypeDef;
+
+typedef struct {
+        uint8_t RTC_WeekDay;
+        uint8_t RTC_Month;
+        uint8_t RTC_Date;
+        uint8_t RTC_Year;
+} RTC_DateTypeDef;
+
+#endif // __STM32F4xx_RTC_H
+
 
 #pragma pack(1)
 struct LOGGER_ITEM {
@@ -49,7 +69,7 @@ struct LOGGER_ITEM* logger_get_previous_item(struct LOGGER_ITEM* item);
 int svc_logger_write_data(uint8_t* data, unsigned int data_len);
 int svc_logger_erase_current_sector();
 struct LOGGER_ITEM* svc_logger_get_previous_item(struct LOGGER_ITEM* item);
-struct LOGGER_ITEM* svc_logger_get_current_item();
+struct LOGGER_ITEM* svc_logger_get_current_item(struct LOGGER_ITEM* item);
 
 #endif //SVC_CLIENT
 #endif //_LOGGER_H_
