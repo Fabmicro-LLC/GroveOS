@@ -3,7 +3,7 @@
 
 	Written by Ruslan Zalata and Evgeny Korolenko
 	
-	Copyright (c) 2017-2022, Fabmicro, LLC., Tyumen, Russia.
+	Copyright (c) 2016-2022, Fabmicro, LLC., Tyumen, Russia.
 	All rights reserved.
 
 	Email: info@fabmicro.ru
